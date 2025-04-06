@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LO1 - Design Zest</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f3eb;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 80px;
+      background-color: #f2d7db;
+      height: 100vh;
+      position: fixed;
+      top: 50px;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
+      gap: 1rem;
+      z-index: 100;
+    }
+
+    .sidebar img {
+      width: 40px;
+      border-radius: 50%;
+    }
+
+    .sidebar .label {
+      font-size: 0.75rem;
+      color: #444;
+      text-align: center;
+    }
+
+    .challenge-sidebar {
+      width: 140px;
+      background-color: #f5e7e9;
+      height: 100vh;
+      position: fixed;
+      top: 50px;
+      left: 80px;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1rem;
+      gap: 1.2rem;
+    }
+
+    .challenge-sidebar a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .challenge-sidebar .active {
+      color: red;
+    }
+
+    .main {
+      margin-left: 270px;
+      padding: 2rem;
+      flex: 1;
+    }
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background-color: #ffc9d6;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      z-index: 1000;
+    }
+
+    .top-nav .tab {
+      background-color: #fcd9e3;
+      padding: 8px 20px;
+      border-radius: 10px 10px 0 0;
+      font-weight: bold;
+    }
+
+    .section {
+      background-color: #f5e7e9;
+      border: 2px solid #ffc9d6;
+      margin-bottom: 2.5rem;
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .section summary {
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      
+    }
+
+    .section p {
+      margin-top: 1rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .file-link {
+      display: block;
+      background-color: #fcd9e3;
+      padding: 10px 15px;
+      margin: 0.5rem 0;
+      border-radius: 8px;
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      border-left: 4px solid #ffc9d6;
+    }
+
+    .file-link:hover {
+      background-color: #ffc9d6;
+    }
+
+    .divider {
+      border-top: 1px dashed #ccc;
+      margin: 1rem 0;
+    }
+
+    .note {
+      background-color: #fff0f5;
+      border-left: 5px solid #ffc9d6;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+    }
+    .section.first {
+  margin-top: 4rem;
+}
+.file-card {
+  position: relative;
+}
+
+.file-info {
+  background-color: #fff0f5;
+  border-left: 4px solid #ffc9d6;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.file-info img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 10px;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.file-info img:hover {
+  transform: scale(1.02);
+}
+
+/* Fullscreen modal preview */
+.img-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.img-modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+}
+
+.img-modal .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
+  </style>
+</head>
+<body>
+  
+
+  <div class="top-nav">
+    <div class="tab">Dashboard</div>
+    
+  </div>
+
+  <div class="sidebar">
+    <img src="labubu.jpg" alt="avatar">
+    <div class="label">account</div>
+
+    <img src="https://img.icons8.com/ios-filled/50/000000/dashboard.png" width="30">
+    <div class="label">projects</div>
+
+    <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-learning-online-education-flatart-icons-outline-flatarticons.png" width="30">
+    <div class="label">LO’s</div>
+
+    <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" width="30">
+    <div class="label">My Git</div>
+  </div>
+
+  <div class="challenge-sidebar">
+    <a href="LO!.html">Home</a>
+    <a href="LO1.html" >Learning Outcome 1</a>
+    <a href="LO2.html"class="active">Learning Outcome 2</a>
+    <a href="LO3.html">Learning Outcome 3</a>
+    <a href="LO4.html">Learning Outcome 4</a>
+    <a href="LO5.html">Learning Outcome 5</a>
+  </div>
+
+  <div class="main">
+    <!-- Website Design Zest-->
+    <details class="section first" open>
+      <summary>Website for Design Zest</summary>
+  
+      <div class="file-card">
+        <a class="file-link toggle-info" href="javascript:void(0);">Inspiration</a>
+        <div class="file-info">
+          <p>I decided to do a qucik website for our group and because most of the members don't like coding i decided that I will make it and they will get the designing part or documentation. First i started looking at Media companies and get inspiration and ideas from them, most of them had really creative design and also had a lot of clients and designs made for them but because we didn't have client and a lot of work i decided to go with a simple layout of our work till this semster. I also saw a lot of animations with mastery area showing what they provide and how they work also I saw from tik tok 3D image gallery and decided to show our posters made for our group and for the landing page I wanted to do animation logo on the top bar so it will be more interactive
+          
+        </div>
+      </div>
+      <!-- competitive analysis -->
+      <div class="file-card">
+        <a class="file-link toggle-info" href="javascript:void(0);">Competitive analysis</a>
+        <div class="file-info">
+          <p>For competitive analysis I took all the ideas from different websites and was thinking how to put it in the group's website so that we can present it and all the needed information will be there, First I made a list of what will one website need for a media company and i putted things like our work, posters, methods, structure of our work etc. and later decided to search from these websites that I liked the most how they designed it. I circled with red everything I liked and implemented it into the website 
+          </p>
+          <img src="firstlogo.png" alt="Kickoff Overview">
+        </div>
+      </div>
+      <!-- coding -->
+      <div class="file-card">
+        <a class="file-link toggle-info" href="javascript:void(0);">Website coding</a>
+        <div class="file-info">
+          <p>To code the mastery area was hard because the website that I got the idea from made it with animations etc. but i am still not really proficient with animation so I was trying to find a way to play with CSS and JS I also asked for help one of my friends that are good with JS and then i tried to do most of the part alone but I also had help from AI. The landing page animation was not made by me but everything else was coded by me, with every step I asked my teammates if they agree with the design and changes I make and also the inspiration I got from multiple websites for media companies, I tried to recreate some eZects (the circles sections) that originally was made with animations etc. and I wasn’t able to do it so I decided to recreate it with CSS keyframes and JS, also another interactive thing is the image gallery that is a 3d slider gallery where all of our posters are there. The website with the commits is in GitHub where everyone with the link can see it.
+
+          </p>
+          <img src="" alt="Kickoff Overview">
+        </div>
+      </div>
+  
+    <div class="file-card">
+      <a class="file-link toggle-info" href="javascript:void(0);">Feedback</a>
+      <div class="file-info">
+        <p> I had a very positive feedback and the teacher suggested to mimic the animation and make it my own for example the mastery are to be a zest ares and make the circle look like a lemon so I decided to continue develop the website through the project. We also had a feedback when we presented to make sure put a mockup email or pay attention on the details because I putted email names "info@designzest.com" and it didn't exist 
+        </p>
+        <img src="poster feedback.png" alt="Kickoff Overview">
+        
+      </div>
+    </div>
+    </details>
+    
+ 
+
+
+
+ <!-- Portfolio coding -->
+  <details class="section first" open>
+    <summary>Website Portfolio</summary>
+
+    <div class="file-card">
+      <a class="file-link toggle-info" href="javascript:void(0);">Inspiration</a>
+      <div class="file-info">
+        <p>After coming up with a name for our group I decided to do a logo that is unique and is showing off the "zest" part
+      I looked at logos on pinterest and come up with the idea to make the "z" look like a lemon, make logos woth different shapes to be more simple, or include basically a halt lemon in our logo
+        </p>
+        <img src="inspirationlogo1.jpg" alt="Kickoff Overview">
+        <img src="inspirationlogo2.jpg" alt="Kickoff Overview">
+        <img src="inspirationlogo3.jpg" alt="Kickoff Overview">
+        <img src="insppirationlogo4.jpg" alt="Kickoff Overview">
+        <img src="inspirationallogo5.png" alt="Kickoff Overview">
+      </div>
+    </div>
+    <!-- competitive analysis -->
+    <div class="file-card">
+      <a class="file-link toggle-info" href="javascript:void(0);">Competitive analysis</a>
+      <div class="file-info">
+        <p>After having in mind what I want I startd designing and using also AI to generate me a "z" that look like a lemon. I made several logos ideas and then put them together to gather feedback later on, My first logo was mainly focused on the AI version and i copy pasted the "z" and put it in canva and continued the "est" later with a font that will match the "z". I found it at first good because it showes the peeled lemon and also the design was good , the zester was also there but putting "Design" looked off so I decided to get a feedback from the teacher 
+        </p>
+        <img src="firstlogo.png" alt="Kickoff Overview">
+      </div>
+    </div>
+    <!-- coding -->
+    <div class="file-card">
+      <a class="file-link toggle-info" href="javascript:void(0);">Website coding</a>
+      <div class="file-info">
+        <p>I asked Dirk on my logo design and he told me that is too detailed and better make more research on how the nowadays logos look like, he told me also to visualize how it will look in every possible size. Because the logo I created at first when I put in a website it will be small and the details wont be noticable, that will represent more of a "bad design choice"
+        </p>
+        <img src="feedbacklogo.png" alt="Kickoff Overview">
+      </div>
+    </div>
+
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Feedback</a>
+    <div class="file-info">
+      <p>After the feedback I decided to create more simple logos, something with squares, circles etc. I did a research more in deep and then saw one of my old photos inspirations from pinterest and then i got the idea to place yellow stripes with a form of a lemon and the darker coloured stripes will be the zester, additionally I desided to put the name of the group below the stripes as well, it turned out simple and pretty but I didn't know if people will notice that this is a lemon or if they will recognize our group, so i asked Mikael for a feedback and without having to exmplain he went for that logo and told me that he actually sees the lemo and the zester. The other logos in my opinion were still too detailed or not so representable of the name "design zest"
+      </p>
+      <img src="inspirationallogo5.png" alt="Kickoff Overview">
+      <img src="logos.png" alt="Kickoff Overview">
+    </div>
+  </div>
+  
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Reflection</a>
+    <div class="file-info">
+      <p>I realized that not everything needs to be chaotic and to have a lot of details, its important most of the times to have a simple design that a big group of audience can undestand by just looking at it, having feedbacks for iterations also are a big role in making a product
+      </p>
+    </div>
+  </div>
+</details>
+
+
+
+
+  </div>
+
+
+
+  
+
+  <div class="img-modal" id="imgModal">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <img id="modalImg" src="" alt="Expanded Preview">
+  </div>
+  
+  <script>
+    // Toggle file card content
+    document.querySelectorAll('.toggle-info').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const card = this.closest('.file-card');
+        const info = card.querySelector('.file-info');
+  
+        document.querySelectorAll('.file-info').forEach(el => {
+          if (el !== info) el.style.display = 'none';
+        });
+  
+        info.style.display = info.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  
+    // Close cards when clicking outside (but NOT inside modal)
+    document.addEventListener('click', (e) => {
+      // Only close cards if NOT inside the modal
+      const isInsideModal = e.target.closest('.img-modal');
+      if (!isInsideModal) {
+        document.querySelectorAll('.file-info').forEach(el => el.style.display = 'none');
+      }
+    });
+  
+    // Image modal functionality
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+    const closeModal = document.getElementById('closeModal');
+  
+    // Show image in modal
+    document.querySelectorAll('.file-info img').forEach(img => {
+      img.addEventListener('click', function (e) {
+        e.stopPropagation();
+        modal.style.display = 'flex';
+        modalImg.src = this.src;
+      });
+    });
+  
+    // Close modal with close button
+    closeModal.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent bubbling up
+      modal.style.display = 'none';
+      modalImg.src = '';
+    });
+  
+    // Also close modal if you click outside the image (the background)
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        modalImg.src = '';
+      }
+    });
+  </script>
+  
+  
+
+
+  
+</body>
+</html>

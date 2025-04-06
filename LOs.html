@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f3eb;
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      background-color: #ffc9d6;
+      height: 50px;
+      padding: 0 1rem;
+    }
+
+    .top-nav .tab {
+      margin-left: 1rem;
+      background-color: #fcd9e3;
+      padding: 8px 20px;
+      border-radius: 10px 10px 0 0;
+      font-weight: bold;
+    }
+
+    .sidebar {
+      width: 80px;
+      background-color: #f2d7db;
+      height: 100vh;
+      position: fixed;
+      top: 50px;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
+      gap: 2rem;
+    }
+
+    .sidebar img {
+      width: 40px;
+      border-radius: 50%;
+    }
+
+    .sidebar .label {
+      font-size: 0.75rem;
+      color: #444;
+    }
+
+    .main {
+      margin-left: 80px;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .line {
+      border-top: 3px solid #7a5547;
+      width: 90%;
+      margin-top: 5px;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      width: 250px;
+      height: 250px;
+      background-color: #f8f3eb;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: black;
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .card p {
+      padding: 0.5rem;
+      margin: 0;
+      font-size: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-nav">
+    <div class="tab">Learning Outcomes</div>
+  </div>
+
+  <div class="sidebar">
+    <img src="labubu.jpg" alt="avatar">
+    <div class="label">account</div>
+
+    <img src="https://img.icons8.com/ios-filled/50/000000/dashboard.png" width="30">
+    <div class="label">Dashboard</div>
+
+    <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" width="30">
+    <div class="label">My Git</div>
+
+  </div>
+
+  <div class="main">
+    <h1>Learning Outcomes</h1>
+    <div class="line"></div>
+    <div class="cards">
+        <a href="LO1.html" class="card">
+          <img src="imae2.jpg" alt="LO1">
+          <p>LO1</p>
+        </a>
+        <a href="LO2.html" class="card">
+          <img src="image.jpg" alt="LO2">
+          <p>LO2</p>
+        </a>
+        <a href="LO3.html" class="card">
+          <img src="imae2.jpg" alt="LO3">
+          <p>LO3</p>
+        </a>
+        <a href="LO4.html" class="card">
+          <img src="imae2.jpg" alt="LO4">
+          <p>LO4</p>
+        </a>
+        <a href="LO5.html" class="card">
+          <img src="imae2.jpg" alt="LO5">
+          <p>LO5</p>
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>

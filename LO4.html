@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LO1 - Design Zest</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f3eb;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 80px;
+      background-color: #f2d7db;
+      height: 100vh;
+      position: fixed;
+      top: 50px;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
+      gap: 1rem;
+      z-index: 100;
+    }
+
+    .sidebar img {
+      width: 40px;
+      border-radius: 50%;
+    }
+
+    .sidebar .label {
+      font-size: 0.75rem;
+      color: #444;
+      text-align: center;
+    }
+
+    .challenge-sidebar {
+      width: 140px;
+      background-color: #f5e7e9;
+      height: 100vh;
+      position: fixed;
+      top: 50px;
+      left: 80px;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1rem;
+      gap: 1.2rem;
+    }
+
+    .challenge-sidebar a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .challenge-sidebar .active {
+      color: red;
+    }
+
+    .main {
+      margin-left: 270px;
+      padding: 2rem;
+      flex: 1;
+    }
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background-color: #ffc9d6;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      z-index: 1000;
+    }
+
+    .top-nav .tab {
+      background-color: #fcd9e3;
+      padding: 8px 20px;
+      border-radius: 10px 10px 0 0;
+      font-weight: bold;
+    }
+
+    .section {
+      background-color: #f5e7e9;
+      border: 2px solid #ffc9d6;
+      margin-bottom: 2.5rem;
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .section summary {
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      
+    }
+
+    .section p {
+      margin-top: 1rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .file-link {
+      display: block;
+      background-color: #fcd9e3;
+      padding: 10px 15px;
+      margin: 0.5rem 0;
+      border-radius: 8px;
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      border-left: 4px solid #ffc9d6;
+    }
+
+    .file-link:hover {
+      background-color: #ffc9d6;
+    }
+
+    .divider {
+      border-top: 1px dashed #ccc;
+      margin: 1rem 0;
+    }
+
+    .note {
+      background-color: #fff0f5;
+      border-left: 5px solid #ffc9d6;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+    }
+    .section.first {
+  margin-top: 4rem;
+}
+.file-card {
+  position: relative;
+}
+
+.file-info {
+  background-color: #fff0f5;
+  border-left: 4px solid #ffc9d6;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.file-info img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 10px;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.file-info img:hover {
+  transform: scale(1.02);
+}
+
+/* Fullscreen modal preview */
+.img-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.img-modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+}
+
+.img-modal .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
+  </style>
+</head>
+<body>
+  
+
+  <div class="top-nav">
+    <div class="tab">Dashboard</div>
+    
+  </div>
+
+  <div class="sidebar">
+    <img src="labubu.jpg" alt="avatar">
+    <div class="label">account</div>
+
+    <img src="https://img.icons8.com/ios-filled/50/000000/dashboard.png" width="30">
+    <div class="label">projects</div>
+
+    <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-learning-online-education-flatart-icons-outline-flatarticons.png" width="30">
+    <div class="label">LO’s</div>
+
+    <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" width="30">
+    <div class="label">My Git</div>
+  </div>
+
+  <div class="challenge-sidebar">
+    <a href="LO!.html">Home</a>
+    <a href="LO1.html" >Learning Outcome 1</a>
+    <a href="LO2.html">Learning Outcome 2</a>
+    <a href="LO3.html">Learning Outcome 3</a>
+    <a href="LO4.html"class="active">Learning Outcome 4</a>
+    <a href="LO5.html">Learning Outcome 5</a>
+  </div>
+
+  <div class="main">
+    <!-- Inspiration Section -->
+    <details class="section first" open>
+      <summary>Brand Guide </summary>
+  
+      <div class="file-card">
+        <a class="file-link toggle-info" href="javascript:void(0);">research and inspiration</a>
+        <div class="file-info">
+          <p>The Brand Guide I started making it in a power point presentation so I can check all the boxes and share it in teams so all of us can edit, my part from the brand guide was the typography, core values and logo. Me and my team decided each of us to make a brand guide quickly and then decide which one is good so we can continue to enhance it together on one brand guide. <a href="https://www.figma.com/design/fQSvz7kuStIT8T4B0SEfH5/Design-Zest-Brand-
+            Guide?node-id=0-1&p=f&t=KLIsnhrfRIH1cK7n-0" target="_blank">Click to see the brand guide</a> 
+          </p>
+        
+        </div>
+      </div>
+      <!-- digital logo -->
+      <div class="file-card">
+        <a class="file-link toggle-info" href="javascript:void(0);">Reflection</a>
+        <div class="file-info">
+          <p>Creating a brand guide is an essential step in building a consistent and recognizable identity. It serves as a clear reference that outlines how a brand should look, sound, and feel across different platforms and materials. By defining elements like logos, colors, fonts, and tone of voice, a brand guide ensures that everyone—from designers to marketers—represents the brand in a unified way. 
+          </p>
+          
+        </div>
+      </div>
+    </details>
+
+    <!-- Trello  -->
+    <details class="section">
+      <summary>Trello</summary>
+  
+     
+      <div class="file-card">
+        <a class="file-link toggle-info" href="javascript:void(0);">How it helped? </a>
+        <div class="file-info">
+          <p>I created a trello that helped us with the branding our company part so that we have a clear idea what we need to do and what is done. It helped us also by assigning roles and putting deadlines on each task. But we decided to continue with notion</p>
+          <img src="trello.png" alt="Reading Guide">
+        </div>
+      </div>
+
+  
+      <div class="divider"></div>
+    </details>
+
+  
+    <details class="section">
+      <summary>Team Chart</summary>
+  
+      <div class="file-card">
+        <a class="file-link toggle-info" href="javascript:void(0);">For what is the team charter?</a>
+        <div class="file-info">
+          <p>
+            The team charter is a document that showcases the group members, roles, norms and rules. We decided to have a couple of roles (team lead, contactperson, quality master and note taker) within the group to make sure these tasks will be done. Every group member also had to write down their strengths and weaknesses, which helped us eventually divide tasks within the project. <br></p>
+          
+        </div>
+      </div>
+  
+
+      <div class="file-card">
+        <a class="file-link toggle-info" href="javascript:void(0);">Product</a>
+        <div class="file-info">
+          <p>I made a file with the template for the team charter so we can all fill our own part, then this way it was easier to see and decide the roles for the projects</p>
+          <img src="teamchart.png" alt="Reading Guide">
+        </div>
+      </div>
+  
+      <div class="divider"></div>
+    </details>
+
+<!-- website design -->
+    <details class="section">
+      <summary>Lotus Brainstomring</summary>
+
+      <div class="file-card">
+        <a class="file-link toggle-info" href="javascript:void(0);">Product</a>
+        <div class="file-info">
+          <p>We had a lecture about the lotus brainstorming and we kinda did that for the branding our company but now we decided to make it more serious and on paper. Using the Lotus Blossom brainstorming method really helped me and my group  break down a broad idea into smaller, more manageable concepts. It provided a structured way to expand my thinking by starting with a central theme and branching out into related ideas</p>
+          <img src="lotus.JPG" alt="Reading Guide">
+        </div>
+      </div>
+  
+      <div class="divider"></div>
+    </details>
+  
+<!-- Logo Animation and different designs -->
+<details class="section">
+  <summary>Empathy Map</summary>
+
+
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Product</a>
+    <div class="file-info">
+      <p>Using an empathy map helped me better understand the users I’m designing for. By visually organizing what the user says, thinks, does, and feels, I was able to step into their shoes and uncover deeper insights beyond just basic needs. It encouraged me to think about their emotions, frustrations, and motivations, which ultimately influenced my design decisions in a more human-centered way.All the information from persona, empathy map are taken from the interviews <a href="https://www.figma.com/design/mGfTERBxTwZqw3MtQE4otK/User-Persona-Template-(Community)?node-id=0-1&t=Q1XxLqpAIrIrE1sc-1" target="_blank">see the whole design thinking process here </a> </p>
+      <img src="empathymap.png" alt="Reading Guide">
+    </div>
+  </div>
+
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Feedback</a>
+    <div class="file-info">
+      <p>We had a feedback from our teacher that we did a lot of progress and we should keep going the only notice was the pov statement that me and my group need to update.</p>
+      <img src="conceptfeed.png" alt="Reading Guide">
+    </div>
+  </div>
+
+  <div class="divider"></div>
+</details>
+
+
+
+<details class="section">
+    <summary>Persona</summary>
+
+    <div class="file-card">
+      <a class="file-link toggle-info" href="javascript:void(0);">Product</a>
+      <div class="file-info">
+        <p>Using an empathy map helped me better understand the users I’m designing for. By visually organizing what the user says, thinks, does, and feels, I was able to step into their shoes and uncover deeper insights beyond just basic needs. It encouraged me to think about their emotions, frustrations, and motivations, which ultimately influenced my design decisions in a more human-centered way.All the information from persona, empathy map are taken from the interviews <a href="https://www.figma.com/design/mGfTERBxTwZqw3MtQE4otK/User-Persona-Template-(Community)?node-id=0-1&t=Q1XxLqpAIrIrE1sc-1" target="_blank">see the whole design thinking process here </a> </p>
+        <img src="persona.png" alt="Reading Guide">
+      </div>
+    </div>
+  
+    <div class="file-card">
+      <a class="file-link toggle-info" href="javascript:void(0);">Feedback</a>
+      <div class="file-info">
+        <p>We had a feedback from our teacher that we did a lot of progress and we should keep going the only notice was the pov statement that me and my group need to update.</p>
+        <img src="conceptfeed.png" alt="Reading Guide">
+      </div>
+    </div>
+  
+    <div class="divider"></div>
+  </details>
+
+<details class="section">
+    <summary>Customer Journey</summary>
+  
+  
+    <div class="file-card">
+      <a class="file-link toggle-info" href="javascript:void(0);">Product</a>
+      <div class="file-info">
+        <p>Our teacher told me and my group that we should make a customer journey even if its not finished and that is a good idea to start thats why me and my teammates did it together and filled the first 3 columns </p>
+        <img src="customer.png" alt="Reading Guide">
+      </div>
+    </div>
+  
+    <div class="file-card">
+      <a class="file-link toggle-info" href="javascript:void(0);">Feedback</a>
+      <div class="file-info">
+        <p>We had a feedback from our teacher that we did a lot of progress and we should keep going the only notice was the pov statement that me and my group need to update.</p>
+        <img src="conceptfeed.png" alt="Reading Guide">
+      </div>
+    </div>
+  
+    <div class="divider"></div>
+  </details>
+  </div>
+
+
+
+  
+
+  <div class="img-modal" id="imgModal">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <img id="modalImg" src="" alt="Expanded Preview">
+  </div>
+  
+  <script>
+    // Toggle file card content
+    document.querySelectorAll('.toggle-info').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const card = this.closest('.file-card');
+        const info = card.querySelector('.file-info');
+  
+        document.querySelectorAll('.file-info').forEach(el => {
+          if (el !== info) el.style.display = 'none';
+        });
+  
+        info.style.display = info.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  
+    // Close cards when clicking outside (but NOT inside modal)
+    document.addEventListener('click', (e) => {
+      // Only close cards if NOT inside the modal
+      const isInsideModal = e.target.closest('.img-modal');
+      if (!isInsideModal) {
+        document.querySelectorAll('.file-info').forEach(el => el.style.display = 'none');
+      }
+    });
+  
+    // Image modal functionality
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+    const closeModal = document.getElementById('closeModal');
+  
+    // Show image in modal
+    document.querySelectorAll('.file-info img').forEach(img => {
+      img.addEventListener('click', function (e) {
+        e.stopPropagation();
+        modal.style.display = 'flex';
+        modalImg.src = this.src;
+      });
+    });
+  
+    // Close modal with close button
+    closeModal.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent bubbling up
+      modal.style.display = 'none';
+      modalImg.src = '';
+    });
+  
+    // Also close modal if you click outside the image (the background)
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        modalImg.src = '';
+      }
+    });
+  </script>
+  
+  
+
+
+  
+</body>
+</html>

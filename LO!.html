@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LO1 - Design Zest</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f3eb;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 80px;
+      background-color: #f2d7db;
+      height: 100vh;
+      position: fixed;
+      top: 50px;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
+      gap: 1rem;
+      z-index: 100;
+    }
+
+    .sidebar img {
+      width: 40px;
+      border-radius: 50%;
+    }
+
+    .sidebar .label {
+      font-size: 0.75rem;
+      color: #444;
+      text-align: center;
+    }
+
+    .challenge-sidebar {
+      width: 140px;
+      background-color: #f5e7e9;
+      height: 100vh;
+      position: fixed;
+      top: 50px;
+      left: 80px;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1rem;
+      gap: 1.2rem;
+    }
+
+    .challenge-sidebar a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .challenge-sidebar .active {
+      color: red;
+    }
+
+    .main {
+      margin-left: 220px;
+      padding: 2rem;
+    }
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background-color: #ffc9d6;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      z-index: 1000;
+    }
+
+    .top-nav .tab {
+      background-color: #fcd9e3;
+      padding: 8px 20px;
+      border-radius: 10px 10px 0 0;
+      font-weight: bold;
+    }
+
+    .title-image {
+      width: 100%;
+      max-width: 500px;
+      display: block;
+      margin: 1rem auto;
+    }
+
+    .content p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .content strong {
+      font-weight: bold;
+    }
+
+    .section-title {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-nav">
+    <div class="tab">Dashboard</div>
+  </div>
+
+  <div class="sidebar">
+    <img src="labubu.jpg" alt="avatar">
+    <div class="label">account</div>
+
+    <img src="https://img.icons8.com/ios-filled/50/000000/dashboard.png" width="30">
+    <div class="label">projects</div>
+
+    <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-learning-online-education-flatart-icons-outline-flatarticons.png" width="30">
+    <div class="label">LO’s</div>
+
+    <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" width="30">
+    <div class="label">My Git</div>
+  </div>
+
+  <div class="challenge-sidebar">
+    <a href="LO!.html"class="active">Home</a>
+    <a href="LO1.html" >Learning Outcome 1</a>
+    <a href="LO2.html">Learning Outcome 2</a>
+    <a href="LO3.html">Learning Outcome 3</a>
+    <a href="LO4.html">Learning Outcome 4</a>
+    <a href="LOs.html">Learning Outcome 5</a>
+  </div>
+
+  <div class="main">
+    <img class="title-image" src="logo.png" alt="Design Zest">
+    <div class="content">
+      <p><strong>You create engaging concepts and translate them into interactive validated media products</strong> by applying user-centered design principles, visual design techniques and by exploring emerging trends and developments in media, design and technologies.</p>
+
+      <p><strong>Explanation</strong><br>
+      <strong>Engaging & validated media products</strong> = You find this out through testing: is the target audience attracted, triggered, satisfied or otherwise intrigued to use the concept or product of it.</p>
+
+      <p><strong>User-centered design principles</strong> = Your digital products are designed and built in accordance with guidelines from the media field, like usability heuristics, persuasive design techniques, UI-patterns, etc…</p>
+
+      <p><strong>Emerging technologies</strong> = You explore technologies that are relevant for the current age of ICT, like Artificial reality, Mixed reality, Internet of Things, etc…</p>
+    </div>
+  </div>
+</body>
+</html>
