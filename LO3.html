@@ -367,42 +367,95 @@
   <div class="divider"></div>
 </details>
   
-<!-- Logo Animation and different designs -->
-<details class="section">
-  <summary>Figma Iteration for small project</summary>
+ <!-- tamagotchi-->
+ <details class="section first" >
+  <summary>Personal Project</summary>
 
   <div class="file-card">
-    <a class="file-link toggle-info" href="javascript:void(0);">Inspiration</a>
+    <a class="file-link toggle-info" href="javascript:void(0);">Ideation</a>
     <div class="file-info">
-      <p>i wanted this semester to start experimenting more on design part and also coding but because its my first time having the adobe creative cloud i wanted to use it as much as possible so I went with different ideas for a small projects, i also make a planning that will help me finish them and not ignore the project and my portfolio.</p>
-      <img src="inspsmallproject.jpg" alt="Portfolio Guide">
-      <img src="inspsmallproject2.jpg" alt="Portfolio Guide">
-      <img src="inspsmallproject3.jpg" alt="Portfolio Guide">
-      <img src="inspsmallproject4.jpg" alt="Portfolio Guide">
-      <img src="inspsmallproject5.jpg" alt="Portfolio Guide">
-      <img src="inspirationsmallp.png" alt="Portfolio Guide">
+      <p>I’ve decided to start a small personal project inspired by Tamagotchi, but with a different purpose and features tailored for people like me—and my team at Takumi. <br>
+        One day, we had a conversation about burnout—from university, work, and the constant stress of thinking about the future. As international students in the Netherlands, we often feel alone. We're trying to save money, stay on top of studies, and keep everything together. But sometimes, all that pressure leads to overthinking, burnout, and losing focus on university or life in general.</p>        
+        <img src="inspsmallproject.jpg" alt="Portfolio Guide">
+        <img src="inspsmallproject2.jpg" alt="Portfolio Guide">
+        <img src="inspsmallproject3.jpg" alt="Portfolio Guide">
+        <img src="inspsmallproject4.jpg" alt="Portfolio Guide">
+        <img src="inspsmallproject5.jpg" alt="Portfolio Guide">
+        <img src="inspirationsmallp.png" alt="Portfolio Guide">
+    </div>
+  </div>
+  <!-- Target Audience Research -->
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Survey and report</a>
+    <div class="file-info">
+      <p>I created a survey so i can better understand my target audience. With this survey my goals are to understand the reason of their current state, to see if they take any actions and if they do why the other tools doesn't help them and what will possibly motivate them. With this questions I also added a few for the app choices and what to input there that will make them more happy and will make the app usable for the purpose reason. For the next weeks I plan to gather all the responses and make a report of the survey.  <a href="https://forms.gle/XAwPGeZ4Gs3MRRLJ9" target="_blank">Click here for survey</a>
+      </p>
+    </div>
+  </div>
+  <!-- concept -->
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Concept</a>
+    <div class="file-info">
+      <p>This app will feature a virtual companion—a modern Tamagotchi—that mirror you. It lives alongside you and reacts to how you manage your day.
+        •	If you miss a task, skip a meal, or don’t study, your Tamagotchi will show signs of being sad, unmotivated, or tired. It might let out a small "aghhh" sound of disappointment.
+        •	If you complete tasks, eat well, or take care of yourself, your Tamagotchi will cheer up and get a little sweet treat or reward.
+        The app promotes emotional awareness and balance, not just productivity.        
+
+      </p>
     </div>
   </div>
 
-  <div class="file-card">
-    <a class="file-link toggle-info" href="javascript:void(0);">Designing</a>
-    <div class="file-info">
-      <p>i started with gathering ideas and get more material for my small projects which will be " cooking book" "self care" by having a pet that you need to take care of and animated posters for my family's restaurant. I started taking backgrounds like from scrapbook for the cooking book and I got several inspirations from behance for the posters.<a href="https://www.figma.com/design/laQ0VktWomqAnU5Io4ieT1/Untitled?node-id=0-1&t=bRFBuDVRIWSmh6Rp-1" target="_blank">Click here for figma (no progress still just background)</a> </p>
+<div class="file-card">
+  <a class="file-link toggle-info" href="javascript:void(0);"> Visual Direction</a>
+  <div class="file-info">
+    <p>I did make some Canva page- prototype and started coding it because I never worked with apps so I wanted to see how long it will take me how it will be what I need etc. Once I got the idea, I started with defining and made survey for the target audience, brainstorming. After that  I started making the prototype (not finished) by first making a user flow, Ui sheet. I looked for inspirations and got many from Pinterest.I started with gathering ideas and get more material for my small projects which will be "self care pet" by having a pet that you need to take care of and will basically mirror you and your mental health.
+    </p>
+    <img src="ui sheet tamagotchi.png" alt="Kickoff Overview">
+    <img src="user flow tamagotchi.png" alt="Kickoff Overview">
+    <img src="tamaprot1.png" alt="Kickoff Overview">
+    <img src="tamaprot2.png" alt="Kickoff Overview">
+    <img src="tamaprot3.png" alt="Kickoff Overview">
+    
+  </div>
+</div>
+<div class="file-card">
+  <a class="file-link toggle-info" href="javascript:void(0);">Set Up To Code</a>
+  <div class="file-info">
+    <p>Because I never made an app I wanted to code first something simple so i started on my research of what to use. I saw that Expo Go is used and later you can deploy the app also I asked Stan if its a good idea to use it and he said yes. So I started following a youtube tutorial on hot to set up and had to download some packages in my terminal but I finally succeded. i had problems of course but I also used Ai to help me see where is the problem and how to fix it. 
+    </p>
+    
+  </div>
+</div>
+
+
+<div class="file-card">
+  <a class="file-link toggle-info" href="javascript:void(0);">Coding</a>
+  <div class="file-info">
+    <p>In my app, I first set a background image using the ImageBackground component to create a cozy and consistent visual environment. Then, I added a top-left stats panel showing the pet's level, experience (EXP), and energy. This is handled with a View styled with absolute positioning and updated dynamically using state variables like level, exp, and energy.<br>
+
+      Below that, I created a set of interactive buttons (TouchableOpacity) that let the user wash the pet, switch between a cat and a dog, and open a shop. Each button updates the state (mood, isDog, showShop) to change the display or trigger animations.
       
-    </div>
+      When the user taps the Shop button, a sliding animation reveals the shop using the Animated API and a slideAnim value. Inside the shop, I used a ScrollView and a custom grid layout to display animated food items. Each item is an Animated.View wrapped in a TouchableOpacity.
+      
+      When the user taps a food item:
+      
+      An animation is triggered (fading out and scaling up briefly).
+      
+      The app reduces the pet's energy by 1 (setEnergy).
+      
+      It also increases EXP by 5, and if EXP reaches 20, the app levels up the pet using a calculation (Math.floor(totalExp / 20)) and resets the remaining EXP.
+      
+      For energy tracking, I used an array to render ⚡ icons, and dimmed them when energy is low by changing the opacity. There's also a "Refill Energy" button to restore energy to the maximum.
+      
+      Lastly, I made sure that user progress is saved even when the app is closed or refreshed. I used AsyncStorage to persist the level, exp, and energy. On app load (useEffect), I retrieve the stored values, and whenever they change, I save the new values back to storage.</p>
+   
+      <video width="600" controls>
+        <source src="app.MP4" type="video/mp4">
+      </video>
   </div>
-
-  <div class="file-card">
-    <a class="file-link toggle-info" href="javascript:void(0);">Feedback</a>
-    <div class="file-info">
-      <p>The feedback i had is to make sure I dont ignore my project and do the small project when i have time</p>
-      <img src="portfoliofeed.png" alt="Reading Guide">
-    </div>
-  </div>
-
- 
-  <div class="divider"></div>
+</div>
 </details>
+
   
  <!-- figma prototype - night of the nerds  -->
 
@@ -466,7 +519,7 @@
    <!-- User flow  -->
 
    <details class="section">
-    <summary>User flow</summary>
+    <summary>User flow - Night of The Nerds</summary>
   
     <div class="file-card">
       <a class="file-link toggle-info" href="javascript:void(0);">User flow</a>
@@ -485,7 +538,7 @@
 
    <!-- Ui sheet  -->
    <details class="section">
-    <summary>Ui sheet</summary>
+    <summary>Ui sheet - Night Of The Nerds</summary>
 
     <div class="file-card">
       <a class="file-link toggle-info" href="javascript:void(0);">Colour palettes</a>
