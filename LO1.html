@@ -7,51 +7,27 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f8f3eb;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #fff5f2;
+      color: #4a3f3f;
       display: flex;
-    }
-
-    .sidebar {
-      width: 80px;
-      background-color: #f2d7db;
-      height: 100vh;
-      position: fixed;
-      top: 50px;
-      left: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 1rem;
-      gap: 1rem;
-      z-index: 100;
-    }
-
-    .sidebar img {
-      width: 40px;
-      border-radius: 50%;
-    }
-
-    .sidebar .label {
-      font-size: 0.75rem;
-      color: #444;
-      text-align: center;
+      flex-direction: row;
     }
 
     .challenge-sidebar {
-      width: 140px;
+      width: 180px;
       background-color: #f5e7e9;
       height: 100vh;
       position: fixed;
-      top: 50px;
-      left: 80px;
-      display: flex;
-      flex-direction: column;
-      padding: 1.5rem 1rem;
-      gap: 1.2rem;
+      top: 0;
+      left: 0;
+      padding: 2rem 1rem;
+      box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
     }
 
     .challenge-sidebar a {
+      display: block;
+      margin-bottom: 1rem;
       text-decoration: none;
       color: #333;
       font-weight: bold;
@@ -63,29 +39,10 @@
     }
 
     .main {
-      margin-left: 270px;
-      padding: 2rem;
-      flex: 1;
-    }
-
-    .top-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
+      margin-left: 200px;
+      padding: 2rem 4%;
+      max-width: 1000px;
       width: 100%;
-      height: 50px;
-      background-color: #ffc9d6;
-      display: flex;
-      align-items: center;
-      padding: 0 1rem;
-      z-index: 1000;
-    }
-
-    .top-nav .tab {
-      background-color: #fcd9e3;
-      padding: 8px 20px;
-      border-radius: 10px 10px 0 0;
-      font-weight: bold;
     }
 
     .section {
@@ -100,13 +57,6 @@
       font-weight: bold;
       font-size: 1.1rem;
       cursor: pointer;
-      
-    }
-
-    .section p {
-      margin-top: 1rem;
-      line-height: 1.6;
-      color: #444;
     }
 
     .file-link {
@@ -130,103 +80,69 @@
       margin: 1rem 0;
     }
 
-    .note {
+    .file-card {
+      position: relative;
+    }
+
+    .file-info {
       background-color: #fff0f5;
-      border-left: 5px solid #ffc9d6;
+      border-left: 4px solid #ffc9d6;
+      border-radius: 8px;
       padding: 1rem;
-      margin-bottom: 1rem;
+      margin-top: 0.5rem;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .file-info img {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 10px;
+      margin: 0.5rem 0;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .file-info img:hover {
+      transform: scale(1.02);
+    }
+
+    .img-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .img-modal img {
+      max-width: 90vw;
+      max-height: 90vh;
       border-radius: 10px;
     }
-    .section.first {
-  margin-top: 4rem;
-}
-.file-card {
-  position: relative;
-}
 
-.file-info {
-  background-color: #fff0f5;
-  border-left: 4px solid #ffc9d6;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-top: 0.5rem;
-  display: none;
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.file-info img {
-  width: 100%;
-  max-width: 200px;
-  border-radius: 10px;
-  margin: 0.5rem 0;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.file-info img:hover {
-  transform: scale(1.02);
-}
-
-/* Fullscreen modal preview */
-.img-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-
-.img-modal img {
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: 10px;
-}
-
-.img-modal .close-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-
-
+    .img-modal .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-  
-
-  <div class="top-nav">
-    <div class="tab">Dashboard</div>
-    
-  </div>
-
-  <div class="sidebar">
-    <img src="labubu.jpg" alt="avatar">
-    <div class="label">account</div>
-
-    <img src="https://img.icons8.com/ios-filled/50/000000/dashboard.png" width="30">
-    <div class="label">projects</div>
-
-    <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-learning-online-education-flatart-icons-outline-flatarticons.png" width="30">
-    <div class="label">LO’s</div>
-
-    <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" width="30">
-    <div class="label">My Git</div>
-  </div>
-
   <div class="challenge-sidebar">
     <a href="LO!.html">Home</a>
     <a href="LO1.html" class="active">Learning Outcome 1</a>
@@ -237,8 +153,7 @@
   </div>
 
   <div class="main">
-    <!-- Inspiration Section -->
-    <details class="section first" open>
+   <details class="section first" open>
       <summary>Logo - Design Zest</summary>
   
       <div class="file-card">
@@ -530,101 +445,159 @@
     <div class="divider"></div>
   </details>
 
-     <!-- figma prototype - night of the nerds  -->
+   <!-- figma prototype - night of the nerds  -->
 
-     <details class="section">
-      <summary>Figma prototype - night of the nerds  </summary>
-  
-      <div class="file-card">
-        <a class="file-link toggle-info" href="javascript:void(0);">Ideation</a>
-        <div class="file-info">
-          <p>After creating the user flow, I began exploring different ways to design the app’s pages. I was assigned to work on everything related to the event page, home page, discount page, and quest page.To get inspiration, I looked at the latest design trends on Pinterest and Dribbble, focusing on what people are currently using and responding to.For the home page, I wanted to include all the core features of the app in one place. I also added everything important to the footer, so users wouldn’t have to scroll too much to find what they need.My goal was to make the app as user-friendly as possible, ensuring that users can quickly understand what the app offers and navigate it with ease. </p>
-          <img src="ideation figma.png" alt="Portfolio Guide">
-          
-        </div>
-      </div>
-  
-      <div class="file-card">
-        <a class="file-link toggle-info" href="javascript:void(0);">Low fidelity prototype</a>
-        <div class="file-info">
-          <p>To design a better high-fidelity prototype, I started by creating a low-fidelity version first. I began with the home page, following the user flow, and included all the main elements to see if the structure made sense. From there, I tested the layout by imagining it as a real app—clicking through each button and interaction in my mind to make sure all the necessary pages were present and connected.
+ <details class="section">
+  <summary>Figma prototype - night of the nerds  </summary>
 
-            Since the first section of the homepage featured events, I continued by building out everything related to the event page. For the sake of consistency, I then reused certain elements and layouts for other pages like the discount page, ensuring a cohesive design throughout the app.<a href="https://www.figma.com/design/EtFQ2FHfAQ5uTE56dtdI9f/Studio-Prototype?node-id=0-1&t=9vMZWE0EUDp4VzCK-1" target="_blank">Figma prototype</a> </p>
-            <img src="low prototype.png" alt="Portfolio Guide">
-          
-        </div>
-      </div>
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Ideation</a>
+    <div class="file-info">
+      <p>After creating the user flow, I began exploring different ways to design the app’s pages. I was assigned to work on everything related to the event page, home page, discount page, and quest page.To get inspiration, I looked at the latest design trends on Pinterest and Dribbble, focusing on what people are currently using and responding to.For the home page, I wanted to include all the core features of the app in one place. I also added everything important to the footer, so users wouldn’t have to scroll too much to find what they need.My goal was to make the app as user-friendly as possible, ensuring that users can quickly understand what the app offers and navigate it with ease. </p>
+      <img src="ideation figma.png" alt="Portfolio Guide">
+      
+    </div>
+  </div>
 
-      <div class="file-card">
-        <a class="file-link toggle-info" href="javascript:void(0);">High fidelity prototype</a>
-        <div class="file-info">
-          <p>After completing the low-fidelity prototype, I moved on to the high-fidelity version. I used the UI sheet to ensure consistency and made sure that all icons were the appropriate size. To keep the pages visually interesting without overwhelming the user, I added decorative figures with low opacity, so they wouldn’t distract from the main content. I also carefully selected images that matched the theme and purpose of each page. This attention to detail will help make my future testing in the Figma prototype more accurate and realistic.</p>
-            <img src="figma prototype.png" alt="Portfolio Guide">
-        </div>
-      </div>
-  
-      <div class="file-card">
-        <a class="file-link toggle-info" href="javascript:void(0);">Feedback</a>
-        <div class="file-info">
-          <p>My group and I received a lot of valuable feedback, both as a team and individually. I personally received two individual pieces of feedback regarding my work.
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Low fidelity prototype</a>
+    <div class="file-info">
+      <p>To design a better high-fidelity prototype, I started by creating a low-fidelity version first. I began with the home page, following the user flow, and included all the main elements to see if the structure made sense. From there, I tested the layout by imagining it as a real app—clicking through each button and interaction in my mind to make sure all the necessary pages were present and connected.
 
-            One of the main suggestions was to add more visual elements to the design, as it currently looks too white and simple. I plan to include more background figures or decorative elements to make the pages feel more engaging. Another suggestion was to add notification buttons, which would improve the user experience by keeping users updated about new events or messages.
-            
-            I also received feedback to enhance the event feature by allowing users to earn discounts—for example, offering food discounts if more people attend an event. This would serve as an incentive and encourage greater participation. Additionally, I need to make it more clear that users can join a group chat when they sign up for an event, so they can connect and interact with others beforehand—this wasn’t very clear in the current design.
-            
-            Another piece of feedback came from a teacher who commented on the point system. He mentioned that giving users the option to exchange points for real money might be more attractive than just using them for character customization. I explained that many people today actually enjoy customizing avatars and are willing to spend money on it. We even checked with our teacher Petra, who agreed and said she would prefer the customization option too.
-            </p>
-        </div>
-      </div>
+        Since the first section of the homepage featured events, I continued by building out everything related to the event page. For the sake of consistency, I then reused certain elements and layouts for other pages like the discount page, ensuring a cohesive design throughout the app.<a href="https://www.figma.com/design/EtFQ2FHfAQ5uTE56dtdI9f/Studio-Prototype?node-id=0-1&t=9vMZWE0EUDp4VzCK-1" target="_blank">Figma prototype</a> </p>
+        <img src="low prototype.png" alt="Portfolio Guide">
+      
+    </div>
+  </div>
 
-      <div class="file-card">
-        <a class="file-link toggle-info" href="javascript:void(0);">Reflection </a>
-        <div class="file-info">
-          <p>Not yet done Iteration after the feedback but that will be my next step. I also plan to conduct mobile design research since we’re creating an app, and I want to make the Figma prototype more detailed and optimized for mobile use. For me, feedback is incredibly important—each suggestion helps improve the product and brings it closer to a more polished and complete version. It’s through this process that the design starts to feel more refined and well thought-out.</p>
-          
-        </div>
-      </div>
-  
-      <div class="divider"></div>
-    </details>
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">High fidelity prototype</a>
+    <div class="file-info">
+      <p>After completing the low-fidelity prototype, I moved on to the high-fidelity version. I used the UI sheet to ensure consistency and made sure that all icons were the appropriate size. To keep the pages visually interesting without overwhelming the user, I added decorative figures with low opacity, so they wouldn’t distract from the main content. I also carefully selected images that matched the theme and purpose of each page. This attention to detail will help make my future testing in the Figma prototype more accurate and realistic.</p>
+        <img src="figma prototype.png" alt="Portfolio Guide">
+    </div>
+  </div>
 
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Feedback</a>
+    <div class="file-info">
+      <p>My group and I received a lot of valuable feedback, both as a team and individually. I personally received two individual pieces of feedback regarding my work.
+
+        One of the main suggestions was to add more visual elements to the design, as it currently looks too white and simple. I plan to include more background figures or decorative elements to make the pages feel more engaging. Another suggestion was to add notification buttons, which would improve the user experience by keeping users updated about new events or messages.
+        
+        I also received feedback to enhance the event feature by allowing users to earn discounts—for example, offering food discounts if more people attend an event. This would serve as an incentive and encourage greater participation. Additionally, I need to make it more clear that users can join a group chat when they sign up for an event, so they can connect and interact with others beforehand—this wasn’t very clear in the current design.
+        
+        Another piece of feedback came from a teacher who commented on the point system. He mentioned that giving users the option to exchange points for real money might be more attractive than just using them for character customization. I explained that many people today actually enjoy customizing avatars and are willing to spend money on it. We even checked with our teacher Petra, who agreed and said she would prefer the customization option too.
+        </p>
+    </div>
+  </div>
+
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Reflection </a>
+    <div class="file-info">
+      <p>Not yet done Iteration after the feedback but that will be my next step. I also plan to conduct mobile design research since we’re creating an app, and I want to make the Figma prototype more detailed and optimized for mobile use. For me, feedback is incredibly important—each suggestion helps improve the product and brings it closer to a more polished and complete version. It’s through this process that the design starts to feel more refined and well thought-out.</p>
+      
+    </div>
+  </div>
+
+  <div class="divider"></div>
+</details>
+
+<details class="section">
+  <summary>FOMO APP</summary>
+
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">User test 1</a>
+    <div class="file-info">
+      <p>From my first workshop, I gave users the chance to test our prototype and provide useful feedback before starting to code the app. I didn’t get a lot of feedback from the first workshop—just that there was too much white space and that the homepage felt chaotic. However, these two points weren’t very helpful because I was unsure of what specific changes to make. I do remember someone mentioning that when you ask someone out, it doesn’t show anywhere, and you don’t know if you’ve asked that person out. Based on that, I made a change and added a notification button, along with a feature to change the button text from "Ask Out" to "Asked Out." I also added a chat feature next to the notifications so users can easily access it from the homepage.</p>
+        
+      <img src="usertest1.JPG" alt="Portfolio Guide">
+      <img src="usertest1.2.JPG" alt="Portfolio Guide">
+      <img src="usertest1.3.JPG" alt="Portfolio Guide">
+      <img src="usertest1.4.JPG" alt="Portfolio Guide">
+      <img src="usertest1.5.JPG" alt="Portfolio Guide">
+      <img src="usertest1.6.jpg" alt="Portfolio Guide">
+      <img src="usertest1.7.jpg" alt="Portfolio Guide">
+
+      
+
+    </div>
+  </div>
+
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Changes 1</a>
+    <div class="file-info">
+      <p>In the pictures, you can see the before and after of my feedback. However, I was not satisfied with the final app, so I was looking forward to the "Night of the Nerds" event. I made sure to give the users small tasks during this event to evaluate whether the app is user-friendly and to see if I needed to make any changes or add new features.</p>
+      <img src="change1.png" alt="Reading Guide">
+    </div>
+  </div>
+
+
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">User test 2</a>
+    <div class="file-info">
+      <p>On the second workshop me and my group saw hat there are two locations for this event and that most people are on the other location so we wanted somehow to engage the people that are in our location and to get more feedbacks as possible so me and Lizzy came up with the idea to get from AH candies and top put them next to our table and to write on a white paper that 1 feedback equals one pack of candies so people would be more motivated to give us feedback. it worked and i got a lot of feedbakcs that day that can help me make a better app for the target audience. </p>
+      <img src="usertest2.JPG" alt="Reading Guide">
+      <img src="usertest2.2.JPG" alt="Reading Guide">
+      <img src="usertest2.3.jpg" alt="Reading Guide">
+    </div>
+  </div>
+
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Changes 2</a>
+    <div class="file-info">
+      <p>After conducting many feedback sessions, I noticed that people felt there was inconsistency between the pages. We discussed the feedback with the group, and most of it was focused on the avatar page. Additionally, the navbar with emojis was seen as unprofessional, so I decided to make changes. Users also mentioned that inviting friends when creating an event would be a great feature, as the app is primarily for friends and connecting with others, so I made sure to include that functionality. Another suggestion was that using an image as a profile picture detracts from the concept of creating your own avatar. As a result, I decided to replace the images of people on the homepage with avatars. You can check out the before and after images of the app and the changes I made below. </p>
+      <img src="change2.png"Reading Guide">
+      <img src="change2.2.png"Reading Guide">
+      <img src="change2.3.png"Reading Guide">
+      <img src="change2.4.png"Reading Guide">
+      <img src="change2.5.png"Reading Guide">
+    </div>
+  </div>
+
+
+  <div class="file-card">
+    <a class="file-link toggle-info" href="javascript:void(0);">Final Product</a>
+    <div class="file-info">
+      <p>The final product is the result of my work, and I am proud of what I've accomplished. I’m happy that I was able to enhance the user experience with the app. It’s also a great feeling that the clients loved the idea and even wanted to do an interview with us.</p>
+      <a href="https://www.webmobilefirst.com/en/screencasts/dsbggy3t1rewqy/" target="_blank" class="shared-link">Click here to view the final product</a>
+    </div>
+  </div>
+  <div class="divider"></div>
+</details>
+
+  </div>
 
   <div class="img-modal" id="imgModal">
     <span class="close-btn" id="closeModal">&times;</span>
     <img id="modalImg" src="" alt="Expanded Preview">
   </div>
-  
+
   <script>
-    // Toggle file card content
     document.querySelectorAll('.toggle-info').forEach(link => {
       link.addEventListener('click', function (e) {
         e.stopPropagation();
         const card = this.closest('.file-card');
         const info = card.querySelector('.file-info');
-  
+
         document.querySelectorAll('.file-info').forEach(el => {
           if (el !== info) el.style.display = 'none';
         });
-  
+
         info.style.display = info.style.display === 'block' ? 'none' : 'block';
       });
     });
-  
-    // Close cards when clicking outside (but NOT inside modal)
+
     document.addEventListener('click', (e) => {
-      // Only close cards if NOT inside the modal
-      const isInsideModal = e.target.closest('.img-modal');
-      if (!isInsideModal) {
+      if (!e.target.closest('.img-modal')) {
         document.querySelectorAll('.file-info').forEach(el => el.style.display = 'none');
       }
     });
-  
-    // Image modal functionality
+
     const modal = document.getElementById('imgModal');
     const modalImg = document.getElementById('modalImg');
     const closeModal = document.getElementById('closeModal');
-  
-    // Show image in modal
+
     document.querySelectorAll('.file-info img').forEach(img => {
       img.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -632,15 +605,13 @@
         modalImg.src = this.src;
       });
     });
-  
-    // Close modal with close button
+
     closeModal.addEventListener('click', (e) => {
-      e.stopPropagation(); // Prevent bubbling up
+      e.stopPropagation();
       modal.style.display = 'none';
       modalImg.src = '';
     });
-  
-    // Also close modal if you click outside the image (the background)
+
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         modal.style.display = 'none';
@@ -648,10 +619,5 @@
       }
     });
   </script>
-  
-  
-
-
-  
 </body>
 </html>

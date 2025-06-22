@@ -7,51 +7,27 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f8f3eb;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #fff5f2;
+      color: #4a3f3f;
       display: flex;
-    }
-
-    .sidebar {
-      width: 80px;
-      background-color: #f2d7db;
-      height: 100vh;
-      position: fixed;
-      top: 50px;
-      left: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 1rem;
-      gap: 1rem;
-      z-index: 100;
-    }
-
-    .sidebar img {
-      width: 40px;
-      border-radius: 50%;
-    }
-
-    .sidebar .label {
-      font-size: 0.75rem;
-      color: #444;
-      text-align: center;
+      flex-direction: row;
     }
 
     .challenge-sidebar {
-      width: 140px;
+      width: 180px;
       background-color: #f5e7e9;
       height: 100vh;
       position: fixed;
-      top: 50px;
-      left: 80px;
-      display: flex;
-      flex-direction: column;
-      padding: 1.5rem 1rem;
-      gap: 1.2rem;
+      top: 0;
+      left: 0;
+      padding: 2rem 1rem;
+      box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
     }
 
     .challenge-sidebar a {
+      display: block;
+      margin-bottom: 1rem;
       text-decoration: none;
       color: #333;
       font-weight: bold;
@@ -63,29 +39,10 @@
     }
 
     .main {
-      margin-left: 270px;
-      padding: 2rem;
-      flex: 1;
-    }
-
-    .top-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
+      margin-left: 200px;
+      padding: 2rem 4%;
+      max-width: 1000px;
       width: 100%;
-      height: 50px;
-      background-color: #ffc9d6;
-      display: flex;
-      align-items: center;
-      padding: 0 1rem;
-      z-index: 1000;
-    }
-
-    .top-nav .tab {
-      background-color: #fcd9e3;
-      padding: 8px 20px;
-      border-radius: 10px 10px 0 0;
-      font-weight: bold;
     }
 
     .section {
@@ -100,13 +57,6 @@
       font-weight: bold;
       font-size: 1.1rem;
       cursor: pointer;
-      
-    }
-
-    .section p {
-      margin-top: 1rem;
-      line-height: 1.6;
-      color: #444;
     }
 
     .file-link {
@@ -130,114 +80,80 @@
       margin: 1rem 0;
     }
 
-    .note {
+    .file-card {
+      position: relative;
+    }
+
+    .file-info {
       background-color: #fff0f5;
-      border-left: 5px solid #ffc9d6;
+      border-left: 4px solid #ffc9d6;
+      border-radius: 8px;
       padding: 1rem;
-      margin-bottom: 1rem;
+      margin-top: 0.5rem;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .file-info img {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 10px;
+      margin: 0.5rem 0;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .file-info img:hover {
+      transform: scale(1.02);
+    }
+
+    .img-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .img-modal img {
+      max-width: 90vw;
+      max-height: 90vh;
       border-radius: 10px;
     }
-    .section.first {
-  margin-top: 4rem;
-}
-.file-card {
-  position: relative;
-}
 
-.file-info {
-  background-color: #fff0f5;
-  border-left: 4px solid #ffc9d6;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-top: 0.5rem;
-  display: none;
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.file-info img {
-  width: 100%;
-  max-width: 200px;
-  border-radius: 10px;
-  margin: 0.5rem 0;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.file-info img:hover {
-  transform: scale(1.02);
-}
-
-/* Fullscreen modal preview */
-.img-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-
-.img-modal img {
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: 10px;
-}
-
-.img-modal .close-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-
-
+    .img-modal .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-  
-
-  <div class="top-nav">
-    <div class="tab">Dashboard</div>
-    
-  </div>
-
-  <div class="sidebar">
-    <img src="labubu.jpg" alt="avatar">
-    <div class="label">account</div>
-
-    <img src="https://img.icons8.com/ios-filled/50/000000/dashboard.png" width="30">
-    <div class="label">projects</div>
-
-    <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-learning-online-education-flatart-icons-outline-flatarticons.png" width="30">
-    <div class="label">LO’s</div>
-
-    <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" width="30">
-    <div class="label">My Git</div>
-  </div>
-
   <div class="challenge-sidebar">
     <a href="LO!.html">Home</a>
     <a href="LO1.html">Learning Outcome 1</a>
     <a href="LO2.html">Learning Outcome 2</a>
     <a href="LO3.html">Learning Outcome 3</a>
     <a href="LO4.html">Learning Outcome 4</a>
-    <a href="LO5.html"class="active">Learning Outcome 5</a>
+    <a href="LO5.html" class="active">Learning Outcome 5</a>
   </div>
 
   <div class="main">
-    <!-- Inspiration Section -->
+     <!-- Inspiration Section -->
     <!-- tamagotchi-->
  <details class="section first" open>
   <summary>Personal Project</summary>
@@ -377,49 +293,38 @@
           </div>
         </div>
       </details>
-    </div>
-      
-
-   
-
-  
+  </div>
 
   <div class="img-modal" id="imgModal">
     <span class="close-btn" id="closeModal">&times;</span>
     <img id="modalImg" src="" alt="Expanded Preview">
   </div>
-  
+
   <script>
-    // Toggle file card content
     document.querySelectorAll('.toggle-info').forEach(link => {
       link.addEventListener('click', function (e) {
         e.stopPropagation();
         const card = this.closest('.file-card');
         const info = card.querySelector('.file-info');
-  
+
         document.querySelectorAll('.file-info').forEach(el => {
           if (el !== info) el.style.display = 'none';
         });
-  
+
         info.style.display = info.style.display === 'block' ? 'none' : 'block';
       });
     });
-  
-    // Close cards when clicking outside (but NOT inside modal)
+
     document.addEventListener('click', (e) => {
-      // Only close cards if NOT inside the modal
-      const isInsideModal = e.target.closest('.img-modal');
-      if (!isInsideModal) {
+      if (!e.target.closest('.img-modal')) {
         document.querySelectorAll('.file-info').forEach(el => el.style.display = 'none');
       }
     });
-  
-    // Image modal functionality
+
     const modal = document.getElementById('imgModal');
     const modalImg = document.getElementById('modalImg');
     const closeModal = document.getElementById('closeModal');
-  
-    // Show image in modal
+
     document.querySelectorAll('.file-info img').forEach(img => {
       img.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -427,15 +332,13 @@
         modalImg.src = this.src;
       });
     });
-  
-    // Close modal with close button
+
     closeModal.addEventListener('click', (e) => {
-      e.stopPropagation(); // Prevent bubbling up
+      e.stopPropagation();
       modal.style.display = 'none';
       modalImg.src = '';
     });
-  
-    // Also close modal if you click outside the image (the background)
+
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         modal.style.display = 'none';
@@ -443,10 +346,5 @@
       }
     });
   </script>
-  
-  
-
-
-  
 </body>
 </html>

@@ -1,60 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f8f3eb;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #fff5f2;
+      color: #4a3f3f;
     }
 
     .top-nav {
       display: flex;
-      align-items: center;
-      background-color: #ffc9d6;
-      height: 50px;
+      align-items: flex-end;
+      background-color: #fdeef1;
+      height: 60px;
       padding: 0 1rem;
-      font-weight: bold;
-      color: #7a5547;
+      position: relative;
+      box-shadow: inset 0 -2px 0 #f7b6c2;
+      gap: 10px;
     }
 
-    .top-nav .tab {
+    .tab {
       background-color: #fcd9e3;
-      padding: 8px 20px;
+      padding: 10px 24px;
       border-radius: 10px 10px 0 0;
-      margin-right: 10px;
+      color: #4a3f3f;
+      font-weight: 600;
+      position: relative;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
     }
 
-    .top-nav .close-btn {
-      font-size: 20px;
+    .tab .close-tab {
+      margin-left: 10px;
       cursor: pointer;
+      font-size: 16px;
     }
+
 
     .sidebar {
       width: 80px;
       background-color: #f2d7db;
       height: 100vh;
       position: fixed;
-      top: 50px;
+      top: 60px;
       left: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding-top: 1rem;
-      gap: 2rem;
+      gap: 1.2rem;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
     }
 
-    .sidebar img {
-      width: 40px;
-      border-radius: 50%;
-    }
-
-    .sidebar .label {
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #4a3f3f;
       font-size: 0.75rem;
-      color: #444;
+      transition: transform 0.2s;
+    }
+
+    .nav-item:hover {
+      transform: scale(1.1);
+    }
+
+    .nav-item img {
+      width: 26px;
+      height: 26px;
+      margin-bottom: 5px;
+      border-radius: 6px;
     }
 
     .main {
@@ -65,10 +87,11 @@
     h1 {
       font-size: 24px;
       font-weight: bold;
+      color: #7a6262;
     }
 
     .line {
-      border-top: 3px solid #7a5547;
+      border-top: 3px solid #f7b6c2;
       width: 80%;
       margin-top: 5px;
       margin-bottom: 30px;
@@ -77,18 +100,19 @@
     .cards {
       display: flex;
       gap: 2rem;
+      flex-wrap: wrap;
     }
 
     .card {
       width: 250px;
       height: 250px;
-      background-color: #f8f3eb;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      background-color: #ffffff;
+      border: 2px solid #fcd9e3;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(242, 215, 219, 0.4);
       text-decoration: none;
-      color: black;
+      color: #4a3f3f;
       transition: transform 0.2s;
       display: flex;
       flex-direction: column;
@@ -96,7 +120,8 @@
     }
 
     .card:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
+      box-shadow: 0 6px 14px rgba(242, 215, 219, 0.5);
     }
 
     .card img {
@@ -110,21 +135,6 @@
       margin: 0;
       font-size: 1rem;
       text-align: center;
-    }
-
-    .progress {
-      position: absolute;
-      top: 150px;
-      right: 80px;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: conic-gradient(#ffb6c1 0% 100%, #f8f3eb 0%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      font-weight: bold;
     }
 
     .transition-overlay {
@@ -144,54 +154,135 @@
       opacity: 1;
       pointer-events: all;
     }
+
+    .iframe-container {
+      margin-left: 80px;
+      padding: 0 2rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 80vh;
+      border: none;
+      margin-top: 1rem;
+      background: white;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
-  <div class="top-nav">
-    <div class="tab">Dashboard</div>
-    <div class="close-btn" onclick="closeDashboard()">&times;</div>
+  <div class="top-nav" id="tabs">
+    <div class="tab" onclick="switchTab('main')">Dashboard<span class="close-tab" onclick="closeTab(event, 'main')">&times;</span></div>
+    <div class="add-tab" onclick="addTab()">+</div>
   </div>
 
   <div class="sidebar">
-    <img src="labubu.jpg" alt="avatar">
-    <div class="label">account</div>
-
-    <img src="https://img.icons8.com/ios-filled/50/000000/dashboard.png" width="30">
-    <div class="label">Dashboard</div>
-
-    <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png" width="30">
-    <div class="label">My Git</div>
+    <a href="#" class="nav-item">
+      <img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home">
+      <span>Home</span>
+    </a>
+    <a href="#" class="nav-item">
+      <img src="https://img.icons8.com/ios/50/user.png" alt="Account">
+      <span>Account</span>
+    </a>
+    <a href="#" class="nav-item">
+      <img src="https://img.icons8.com/ios/50/dashboard.png" alt="Dashboard">
+      <span>Dash</span>
+    </a>
+    <a href="#" class="nav-item">
+      <img src="https://img.icons8.com/ios/50/open-book--v1.png" alt="Courses">
+      <span>Courses</span>
+    </a>
+    <a href="#" class="nav-item">
+      <img src="https://img.icons8.com/ios/50/calendar--v1.png" alt="Calendar">
+      <span>Calendar</span>
+    </a>
+    <a href="#" class="nav-item">
+      <img src="https://img.icons8.com/ios/50/filled-message.png" alt="Inbox">
+      <span>Inbox</span>
+    </a>
+    <a href="#" class="nav-item">
+      <img src="https://img.icons8.com/ios/50/time-machine.png" alt="History">
+      <span>History</span>
+    </a>
+    <a href="#" class="nav-item">
+      <img src="https://img.icons8.com/ios/50/mind-map.png" alt="StudyCoach">
+      <span>Study</span>
+    </a>
+    <a href="#" class="nav-item">
+      <img src="https://img.icons8.com/ios/50/folder-invoices--v1.png" alt="Portfolio">
+      <span>Portfolio</span>
+    </a>
   </div>
 
-  <div class="main">
+  <div class="main" id="main">
     <h1>DASHBOARD</h1>
     <div class="line"></div>
     <div class="cards">
-      <a href="projects.html" class="card">
+      <a href="#" class="card" onclick="openTab('projects.html', 'Projects')">
         <img src="image.jpg" alt="Projects">
         <p>Projects</p>
       </a>
-      <a href="LOs.html" class="card">
+      <a href="#" class="card" onclick="openTab('LOs.html', 'LOs')">
         <img src="imae2.jpg" alt="LOs">
         <p>LO's</p>
       </a>
     </div>
   </div>
 
-  <div class="progress">
-    100%
-  </div>
+  <div class="iframe-container" id="iframeContainer"></div>
 
   <div class="transition-overlay" id="transitionOverlay"></div>
 
   <script>
-    function closeDashboard() {
-      const overlay = document.getElementById('transitionOverlay');
-      overlay.classList.add('show');
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 500);
+  
+
+    function openTab(url, label) {
+      const tabId = label.replace(/\s+/g, '').toLowerCase();
+
+      if (!document.getElementById(tabId)) {
+        const tab = document.createElement('div');
+        tab.className = 'tab';
+        tab.innerHTML = `${label}<span class="close-tab" onclick="closeTab(event, '${tabId}')">&times;</span>`;
+        tab.onclick = () => switchTab(tabId);
+        tab.id = `${tabId}-tab`;
+        document.getElementById('tabs').insertBefore(tab, document.querySelector('.add-tab'));
+
+        const iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.id = tabId;
+        document.getElementById('iframeContainer').appendChild(iframe);
+      }
+
+      switchTab(tabId);
     }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.main, iframe').forEach(el => el.style.display = 'none');
+      const target = document.getElementById(tabId);
+      if (target) target.style.display = 'block';
+    }
+
+    function closeTab(e, tabId) {
+  e.stopPropagation();
+
+  if (tabId === 'main') {
+    const overlay = document.getElementById('transitionOverlay');
+    overlay.classList.add('show');
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 500);
+    return; // stop here, don't do the rest
+  }
+
+  const tab = document.getElementById(`${tabId}-tab`);
+  const iframe = document.getElementById(tabId);
+  if (tab) tab.remove();
+  if (iframe) iframe.remove();
+  switchTab('main');
+}
+
+
   </script>
 </body>
 </html>
